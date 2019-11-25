@@ -9,6 +9,10 @@
     </form>
 </div>
 <div>Список задач</div>
+<form method="post" action="filter">
+    <input type="text" name="filter">
+    <button type="submit">Найти</button>
+</form>
 {{#tasks}}
     <div>
         <b>{{id}}</b>

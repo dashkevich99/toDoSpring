@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.example.toDoSpring.domain.Task;
+
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -34,6 +36,18 @@ public class ToDoSpringController {
         Task task = new Task(text, tag);
         taskRepo.save(task);
         Iterable<Task> tasks = taskRepo.findAll();
+        model.put("tasks", tasks);
+        return "main";
+    }
+
+    @PostMapping("filter")
+    public String filter(@RequestParam String filter, Map<String, Object> model){
+        Iterable<Task> tasks;
+        if (filter !=null && !filter.isEmpty()) {
+            tasks = taskRepo.findByTag(filter);
+        } else {
+            tasks = taskRepo.findAll();
+        }
         model.put("tasks", tasks);
         return "main";
     }
