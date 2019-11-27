@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Add task</title>
+</head>
+<form method="get" action="main">
+    <button type="submit">On main</button>
+</form>
+<div>Добавление задачи</div>
+<div>
+    <form method="post" action="addtask">
+        <input type="text" name="text" placeholder="Введите задачу">
+        <input type="text" name="tag" placeholder="Тэг">
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+<body>
+{{#tasks}}
+    <div>
+        <b>{{id}}</b>
+        <span>{{text}}</span>
+        <i>{{tag}}</i>
+    </div>
+{{/tasks}}
+</body>
+</html>

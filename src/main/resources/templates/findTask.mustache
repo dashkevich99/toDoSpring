@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Find tasks</title>
+</head>
+<form method="get" action="main">
+    <button type="submit">On main</button>
+</form>
+<div>Поиск задач по тегу</div>
+<form method="post" action="filter">
+    <input type="text" name="filter">
+    <button type="submit">Найти</button>
+</form>
+<body>
+{{#tasks}}
+    <div>
+        <b>{{id}}</b>
+        <span>{{text}}</span>
+        <i>{{tag}}</i>
+    </div>
+{{/tasks}}
+</body>
+</html>

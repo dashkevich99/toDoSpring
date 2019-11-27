@@ -15,21 +15,19 @@ public class ToDoSpringController {
 
     @Autowired
     private TaskRepo taskRepo;
-    
-    @GetMapping
-    public String Main(Map<String, Object> model) {
-        Iterable<Task> tasks = taskRepo.findAll();
-        model.put("tasks", tasks);
+
+    @GetMapping ("main")
+    public String Main() {
         return "main";
     }
 
-    @PostMapping
+    @PostMapping ("addtask")
     public String add(@RequestParam String text, @RequestParam String tag, Map<String, Object> model) {
         Task task = new Task(text, tag);
         taskRepo.save(task);
         Iterable<Task> tasks = taskRepo.findAll();
         model.put("tasks", tasks);
-        return "main";
+        return "addTask";
     }
 
     @PostMapping("filter")
@@ -41,19 +39,23 @@ public class ToDoSpringController {
             tasks = taskRepo.findAll();
         }
         model.put("tasks", tasks);
-        return "findtask";
+        return "findTask";
     }
 
     @GetMapping("alltask")
-    public String Allmain(Map<String, Object> model) {
+    public String AllTask(Map<String, Object> model) {
         Iterable<Task> tasks = taskRepo.findAll();
         model.put("tasks", tasks);
-        return "allmain";
+        return "allTasks";
     }
 
     @GetMapping("findtask")
-    //  public String Allmain(Map<String, Object> model) {
-    public String Allmain() {
-        return "findtask";
+    public String FindTask() {
+        return "findTask";
+    }
+
+    @GetMapping("addtaskButton")
+    public String AddTask() {
+        return "addTask";
     }
 }

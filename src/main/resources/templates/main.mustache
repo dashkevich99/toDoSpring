@@ -3,31 +3,17 @@
     <title>Tasks</title>
 </head>
 <body>
-<div>
-    <form method="post">
-        <input type="text" name="text" placeholder="Введите задачу">
-        <input type="text" name="tag" placeholder="Тэг">
-        <button type="submit">Добавить</button>
-    </form>
-</div>
-<div>Список задач</div>
-    <form method="post" action="filter">
-        <input type="text" name="filter">
-        <button type="submit">Найти</button>
-    </form>
-{{#tasks}}
-    <div>
-        <b>{{id}}</b>
-        <span>{{text}}</span>
-        <i>{{tag}}</i>
-    </div>
-{{/tasks}}
 <form method="get" action="alltask">
-    <button type="submit">Все задачи</button>
+    <button type="submit">All tasks</button>
 </form>
 <form method="get" action="findtask">
-    <button type="submit">Поиск задачи</button>
+    <button type="submit">Find task</button>
 </form>
-
+<form method="get" action="addtaskButton">
+    <button type="submit">Add task</button>
+</form>
+<div>
+    <p>Developed by Pavel Dashkevich 375447255070@ya.ru</p>
+</div>
 </body>
 </html>
