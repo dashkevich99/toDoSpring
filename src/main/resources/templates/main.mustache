@@ -1,5 +1,7 @@
 <html>
-
+<head>
+    <title>Tasks</title>
+</head>
 <body>
 <div>
     <form method="post">
@@ -9,10 +11,10 @@
     </form>
 </div>
 <div>Список задач</div>
-<form method="post" action="filter">
-    <input type="text" name="filter">
-    <button type="submit">Найти</button>
-</form>
+    <form method="post" action="filter">
+        <input type="text" name="filter">
+        <button type="submit">Найти</button>
+    </form>
 {{#tasks}}
     <div>
         <b>{{id}}</b>
@@ -20,5 +22,12 @@
         <i>{{tag}}</i>
     </div>
 {{/tasks}}
+<form method="get" action="alltask">
+    <button type="submit">Все задачи</button>
+</form>
+<form method="get" action="findtask">
+    <button type="submit">Поиск задачи</button>
+</form>
+
 </body>
 </html>

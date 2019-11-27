@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.example.toDoSpring.domain.Task;
 
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -16,14 +15,7 @@ public class ToDoSpringController {
 
     @Autowired
     private TaskRepo taskRepo;
-
-    @GetMapping("/toDoSpring")
-    public String toDoSpring(@RequestParam(name = "name", required = false, defaultValue = "World") String name,
-                             Map<String, Object> model) {
-        model.put("name", name);
-        return "toDoSpring";
-    }
-
+    
     @GetMapping
     public String Main(Map<String, Object> model) {
         Iterable<Task> tasks = taskRepo.findAll();
@@ -49,6 +41,19 @@ public class ToDoSpringController {
             tasks = taskRepo.findAll();
         }
         model.put("tasks", tasks);
-        return "main";
+        return "findtask";
+    }
+
+    @GetMapping("alltask")
+    public String Allmain(Map<String, Object> model) {
+        Iterable<Task> tasks = taskRepo.findAll();
+        model.put("tasks", tasks);
+        return "allmain";
+    }
+
+    @GetMapping("findtask")
+    //  public String Allmain(Map<String, Object> model) {
+    public String Allmain() {
+        return "findtask";
     }
 }
