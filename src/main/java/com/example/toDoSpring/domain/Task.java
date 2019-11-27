@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 
 @Entity
 public class Task {
@@ -12,13 +13,13 @@ public class Task {
     private Integer id;
 
     private String text;
-    private String tag;
+    private LocalDate date;
 
     public Task(){}
 
-    public Task(String text, String tag) {
+    public Task(String text, LocalDate date) {
         this.text = text;
-        this.tag = tag;
+        this.date = date;
     }
 
     public String getText() {
@@ -29,12 +30,12 @@ public class Task {
         this.text = text;
     }
 
-    public String getTag() {
-        return tag;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setTag(String tag) {
-        this.tag = tag;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public Integer getId() {

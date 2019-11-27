@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.example.toDoSpring.domain.Task;
 
+import java.time.LocalDate;
 import java.util.Map;
 
 @Controller
@@ -22,8 +23,8 @@ public class ToDoSpringController {
     }
 
     @PostMapping ("addtask")
-    public String add(@RequestParam String text, @RequestParam String tag, Map<String, Object> model) {
-        Task task = new Task(text, tag);
+    public String add(@RequestParam String text, @RequestParam LocalDate date, Map<String, Object> model) {
+        Task task = new Task(text, date);
         taskRepo.save(task);
         Iterable<Task> tasks = taskRepo.findAll();
         model.put("tasks", tasks);
@@ -31,9 +32,10 @@ public class ToDoSpringController {
     }
 
     @PostMapping("filter")
-    public String filter(@RequestParam String filter, Map<String, Object> model){
+    public LocalDate filter(@RequestParam LocalDate filter, Map<String, Object> model){
         Iterable<Task> tasks;
-        if (filter !=null && !filter.isEmpty()) {
+        if (filter !=null ) {
+            //if (filter !=null && !filter.isEmpty()) {
             tasks = taskRepo.findByTag(filter);
         } else {
             tasks = taskRepo.findAll();
